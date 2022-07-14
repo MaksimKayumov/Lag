@@ -14,8 +14,10 @@ FOR /F "delims=; tokens=1,2,3,4,5,6,7" %%a in (%1) do (
 	) else if %%a == dec (
 		echo !cmd!;%%b;1;!cmdnext!;>>%1.lag
 	) else if %%a == start (
+		echo !cmdnext!;a;0;start%%b;>>%1.lag
 		echo start%%b;%%c;0;end%%b;>>%1.lag
 	) else if %%a == end (
+		echo !cmdnext!;a;0;start%%b;>>%1.lag	
 		echo end%%b;%%c;0;after%%b;>>%1.lag
 		echo loop%%b;go;0;start%%b;>>%1.lag
 		echo after%%b;endloop;1;after%%b;>>%1.lag
